@@ -6,11 +6,7 @@ import {
   Lock,
   Book,
   Brain,
-  Search,
-  CheckSquare,
-  TrendingUp,
-  Trophy,
-  Target
+  Search
 } from "lucide-react";
 
 interface HomeViewProps {
@@ -94,48 +90,6 @@ export default function HomeView({ onStartQuest }: HomeViewProps) {
           ))}
         </div>
       </div>
-
-      {/* My Journey Section */}
-      <section className="mt-20 flex flex-col items-center gap-12 rounded-[4rem] bg-white p-12 shadow-2xl border-4 border-white">
-        <h2 className="text-6xl font-black text-black">My Journey</h2>
-
-        <div className="flex w-full max-w-5xl justify-between gap-8">
-          {[
-            { title: "Lesson Done", val: "01/20", icon: <CheckSquare className="h-10 w-10 text-gray-600" /> },
-            { title: "Days Streak", val: "1 DAYS", icon: <TrendingUp className="h-10 w-10 text-gray-600" /> },
-            { title: "Accomplishment", val: "Explorer", icon: <Trophy className="h-10 w-10 text-gray-600" /> },
-          ].map((card, i) => (
-            <div key={i} className="relative flex-1 rounded-[2rem] bg-[#E9F3D3] p-8 shadow-xl overflow-hidden border-4 border-white">
-              <div className="flex items-center gap-4">
-                <div className="rounded-xl bg-white p-2 shadow-sm">{card.icon}</div>
-                <div>
-                  <p className="rounded-full bg-[#96B77D] px-3 py-1 text-[10px] font-black text-black">{card.title}</p>
-                  <p className="mt-2 text-3xl font-black text-black">{card.val}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Today's Mission Card */}
-        <div className="relative w-full max-w-5xl rounded-full bg-[#E9F3D3] p-4 shadow-xl border-4 border-white">
-          <div className="flex items-center gap-6 px-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-md">
-              <Target className="h-10 w-10 text-red-500" />
-            </div>
-            <div className="relative flex-1">
-              <p className="absolute -top-6 left-0 text-sm font-black text-black">Today&apos;s Mission</p>
-              <div className="h-8 w-full rounded-full bg-blue-100 overflow-hidden">
-                <div className="h-full bg-[#718AF5]" style={{ width: '33%' }}></div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-3xl font-black text-black">1/3</span>
-              <Star className="h-10 w-10 fill-yellow-400 text-yellow-400" />
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

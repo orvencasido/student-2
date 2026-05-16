@@ -3,8 +3,8 @@
 import Image from "next/image";
 
 interface HeaderProps {
-  activeTab: 'home' | 'info';
-  onTabChange: (tab: 'home' | 'info') => void;
+  activeTab: 'home' | 'info' | 'journey';
+  onTabChange: (tab: 'home' | 'info' | 'journey') => void;
 }
 
 export default function Header({ activeTab, onTabChange }: HeaderProps) {
@@ -32,6 +32,12 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
           className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === 'home' ? 'text-[#10B981] scale-110' : 'text-gray-700'}`}
         >
           Home
+        </button>
+        <button
+          onClick={() => onTabChange('journey')}
+          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === 'journey' ? 'text-[#10B981] scale-110' : 'text-gray-700'}`}
+        >
+          My Journey
         </button>
         <button
           onClick={() => onTabChange('info')}

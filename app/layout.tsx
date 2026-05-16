@@ -9,8 +9,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ReadBloom - Welcome",
+  title: "ReadBloom - Student Portal",
   description: "Where words bloom, minds grow.",
+  icons: {
+    icon: "/img/icon.png",
+  },
 };
 
 export default function RootLayout({

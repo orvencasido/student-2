@@ -9,13 +9,14 @@ import StoryReadingView from "./StoryReadingView";
 import VideoPreviewView from "./VideoPreviewView";
 import Quiz from "./Quiz";
 import CongratulationView from "./CongratulationView";
+import JourneyView from "./JourneyView";
 
 interface DashboardProps {
   onLogout: () => void;
 }
 
 export default function Dashboard({ onLogout }: DashboardProps) {
-  const [activeTab, setActiveTab] = useState<'home' | 'info' | 'quest' | 'reading' | 'preview' | 'quiz' | 'finish'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'info' | 'quest' | 'reading' | 'preview' | 'quiz' | 'finish' | 'journey'>('home');
 
   const renderContent = () => {
     switch (activeTab) {
@@ -23,6 +24,8 @@ export default function Dashboard({ onLogout }: DashboardProps) {
         return <HomeView onStartQuest={() => setActiveTab('quest')} />;
       case 'info':
         return <InformationView onLogout={onLogout} />;
+      case 'journey':
+        return <JourneyView />;
       case 'quest':
         return <RecordCameraCheck onStart={() => setActiveTab('reading')} />;
       case 'reading':
@@ -48,8 +51,8 @@ export default function Dashboard({ onLogout }: DashboardProps) {
 
       {!['reading', 'preview', 'quiz', 'finish'].includes(activeTab) && (
         <Header
-          activeTab={activeTab === 'info' ? 'info' : 'home'}
-          onTabChange={(tab: 'home' | 'info') => setActiveTab(tab)}
+          activeTab={activeTab === 'info' ? 'info' : activeTab === 'journey' ? 'journey' : 'home'}
+          onTabChange={(tab: 'home' | 'info' | 'journey') => setActiveTab(tab)}
         />
       )}
 
