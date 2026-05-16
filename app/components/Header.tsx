@@ -1,13 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-interface HeaderProps {
-  activeTab: 'home' | 'info' | 'journey';
-  onTabChange: (tab: 'home' | 'info' | 'journey') => void;
-}
+export default function Header() {
+  const pathname = usePathname();
 
-export default function Header({ activeTab, onTabChange }: HeaderProps) {
+  const getActiveTab = () => {
+    if (pathname.includes("/journey")) return "journey";
+    if (pathname.includes("/information")) return "info";
+    return "home";
+  };
+
+  const activeTab = getActiveTab();
+
   return (
     <nav className="fixed top-0 left-0 z-50 flex h-20 w-full items-center justify-between bg-white/30 backdrop-blur-md border-b border-white/20 px-8 shadow-lg overflow-visible">
       <div className="flex items-center gap-2 relative">
@@ -27,24 +34,24 @@ export default function Header({ activeTab, onTabChange }: HeaderProps) {
 
       {/* Navigation Links */}
       <div className="flex items-center gap-12 pr-4">
-        <button
-          onClick={() => onTabChange('home')}
-          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === 'home' ? 'text-[#10B981] scale-110' : 'text-gray-700'}`}
+        <Link
+          href="/dashboard"
+          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === "home" ? "text-[#10B981] scale-110" : "text-gray-700"}`}
         >
           Home
-        </button>
-        <button
-          onClick={() => onTabChange('journey')}
-          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === 'journey' ? 'text-[#10B981] scale-110' : 'text-gray-700'}`}
+        </Link>
+        <Link
+          href="/journey"
+          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === "journey" ? "text-[#10B981] scale-110" : "text-gray-700"}`}
         >
           My Journey
-        </button>
-        <button
-          onClick={() => onTabChange('info')}
-          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === 'info' ? 'text-[#10B981] scale-110' : 'text-gray-700'}`}
+        </Link>
+        <Link
+          href="/information"
+          className={`text-xl font-black cursor-pointer transition-all hover:text-[#10B981] ${activeTab === "info" ? "text-[#10B981] scale-110" : "text-gray-700"}`}
         >
           Information
-        </button>
+        </Link>
       </div>
     </nav>
   );

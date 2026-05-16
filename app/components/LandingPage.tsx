@@ -1,13 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Mail, LockIcon } from "lucide-react";
 
-interface LandingPageProps {
-  onLogin: () => void;
-}
-
-export default function LandingPage({ onLogin }: LandingPageProps) {
+export default function LandingPage() {
+  const router = useRouter();
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-start overflow-hidden font-poppins py-20">
       {/* Background Image */}
@@ -42,11 +40,10 @@ export default function LandingPage({ onLogin }: LandingPageProps) {
           </p>
         </div>
 
-        {/* Login Form */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onLogin();
+            router.push("/dashboard");
           }}
           className="flex w-full max-w-md flex-col space-y-6 px-4 py-10"
         >
