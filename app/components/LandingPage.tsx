@@ -11,7 +11,7 @@ export default function LandingPage({ onLogin }: LandingPageProps) {
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-start overflow-hidden font-poppins py-20">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 -z-10 h-full w-full bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/img/bg.png')" }}
       />
@@ -32,7 +32,7 @@ export default function LandingPage({ onLogin }: LandingPageProps) {
 
         {/* Welcome Text */}
         <div className="text-center">
-          <h1 
+          <h1
             className="text-5xl font-black tracking-tight text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)] md:text-6xl"
           >
             Welcome little one!
@@ -43,7 +43,13 @@ export default function LandingPage({ onLogin }: LandingPageProps) {
         </div>
 
         {/* Login Form */}
-        <form className="flex w-full max-w-md flex-col space-y-6 px-4 py-10">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onLogin();
+          }}
+          className="flex w-full max-w-md flex-col space-y-6 px-4 py-10"
+        >
           {/* Email Field */}
           <div className="space-y-2">
             <label className="text-sm font-black tracking-widest text-white drop-shadow-md">
@@ -81,8 +87,7 @@ export default function LandingPage({ onLogin }: LandingPageProps) {
           {/* Login Button */}
           <div className="pt-6 flex justify-center">
             <button
-              onClick={onLogin}
-              type="button"
+              type="submit"
               className="group relative flex w-48 cursor-pointer items-center justify-center overflow-hidden rounded-full border-b-4 border-yellow-700 bg-gradient-to-b from-[#FFE580] via-[#FFD700] to-[#FFC107] px-8 py-3 text-xl font-black tracking-widest text-black transition-all hover:scale-105 active:scale-95 active:border-b-0 active:translate-y-[2px]"
             >
               LOG IN

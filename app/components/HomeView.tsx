@@ -13,7 +13,11 @@ import {
   Target
 } from "lucide-react";
 
-export default function HomeView() {
+interface HomeViewProps {
+  onStartQuest: () => void;
+}
+
+export default function HomeView({ onStartQuest }: HomeViewProps) {
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-12 p-8 pt-32 pb-32">
       {/* Welcome Banner */}
@@ -27,7 +31,10 @@ export default function HomeView() {
             <p className="mt-2 text-lg font-bold tracking-widest text-gray-500 uppercase">LEVEL 1 READING EXPLORER</p>
           </div>
         </div>
-        <button className="rounded-full bg-[#5C7CFA] px-12 py-6 text-4xl font-black text-white shadow-lg cursor-pointer transition-transform hover:scale-105 active:scale-95">
+        <button 
+          onClick={onStartQuest}
+          className="rounded-full bg-[#5C7CFA] px-12 py-6 text-4xl font-black text-white shadow-lg cursor-pointer transition-transform hover:scale-105 active:scale-95"
+        >
           Start Quest
         </button>
       </section>
